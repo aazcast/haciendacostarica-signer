@@ -1,0 +1,26 @@
+{
+  "name": "haciendacostarica-signer",
+  "version": "1.0.0",
+  "description": "Sign bill for Hacienda Costa Rica with xades-epes using p12",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andres Castillo - aazcast",
+  "license": "MIT",
+  "dependencies": {
+    "node-forge": "^0.8.4",
+    "node-webcrypto-ossl": "^1.0.45",
+    "pvtsutils": "^1.0.4",
+    "xadesjs": "^2.0.15",
+    "xml-core": "^1.0.15"
+  },
+  "bugs": {
+    "url": "https://github.com/aazcast/haciendacostarica-signer/issues"
+  },
+  "homepage": "https://github.com/aazcast/haciendacostarica-signer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:aazcast/haciendacostarica-signer.git"
+  }
+}
