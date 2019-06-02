@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Andres Castillo - aazcast",
+  "author": "Andres Castillo <andres@gravity.cr> (https://gravity.cr)",
   "license": "MIT",
   "dependencies": {
     "node-forge": "^0.8.4",
