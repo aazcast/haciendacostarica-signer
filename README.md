@@ -36,6 +36,9 @@ const nameController = async (req, res) => {
 ## Changelog
 [CHANGELOG.md](CHANGELOG.md)
 
+## Donations
+https://paypal.me/aazcast
+
 ## License
 The MIT License (MIT)
 
