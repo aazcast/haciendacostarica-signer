@@ -11,12 +11,26 @@ Andrés Castillo @aazcast from gravity.cr
 $ npm i haciendacostarica-signer --save
 ```
 
-## USE
+## EXAMPLE OF USE
 ```js
+//Definir la dependencia.
 const Signer = require('haciendacostarica-signer');
-const xml = await Signer.sign(xmlString, llavecriptografica, PassLlaveCriptografica);
 
-const verify = await Signer.verifySignature(llavecriptografica, PassLlaveCriptografica);
+const nameController = async (req, res) => {
+  try {
+    //Enviar a .sign el XML en string, la llave criptografica (.p12) en BASE64, y el pass en string.
+    //Se retornara el XML ya firmado en BASE64.
+    const xml = await Signer.sign(xmlString, llavecriptografica, PassLlaveCriptografica);
+
+    //Tambien está el function verifySignature el cuál verifica que la llave criptografica y el pass de la misma sean correctas.
+    //Si es correcto retorna true, caso contrario el error.
+    //Ej de uso: antes de guardar los datos del contribuyente y usar el Sign se puede verificar con antelación la llave. Si es true se guarda.
+    const verify = await Signer.verifySignature(llavecriptografica, PassLlaveCriptografica);
+  } catch (err) {
+    res.send(err);
+  }
+}
+
 ```
 
 ## Changelog
