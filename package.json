@@ -1,6 +1,6 @@
 {
   "name": "haciendacostarica-signer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sign bill for Hacienda Costa Rica with xades-epes using p12",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,8 @@
   "author": "Andres Castillo <andres@gravity.cr> (https://gravity.cr)",
   "license": "MIT",
   "dependencies": {
+    "@peculiar/webcrypto": "^1.0.12",
     "node-forge": "^0.8.4",
-    "node-webcrypto-ossl": "^1.0.45",
     "pvtsutils": "^1.0.4",
     "xadesjs": "^2.0.15",
     "xml-core": "^1.0.15"

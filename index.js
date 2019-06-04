@@ -10,13 +10,13 @@
  * Module dependencies
  */
 const forge = require('node-forge');
-const WebCrypto = require('node-webcrypto-ossl');
+const { Crypto } = require('@peculiar/webcrypto');
 const xades = require('xadesjs');
 const xmlCore = require('xml-core');
 const {Convert} = require('pvtsutils');
 
 // Preset
-const crypto = new WebCrypto();
+const crypto = new Crypto();
 xades.Application.setEngine("OpenSSL", crypto);
 
 
