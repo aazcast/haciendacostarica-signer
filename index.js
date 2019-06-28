@@ -14,11 +14,12 @@ const { Crypto } = require('@peculiar/webcrypto');
 const xades = require('xadesjs');
 const xmlCore = require('xml-core');
 const {Convert} = require('pvtsutils');
+const moment = require('moment-timezone');
 
 // Preset
 const crypto = new Crypto();
 xades.Application.setEngine("OpenSSL", crypto);
-
+moment.tz.setDefault("America/Costa_Rica");
 
 /**
  * Main function to sign one XML
@@ -43,7 +44,18 @@ exports.verifySignature = async (key, pass) => {
     const passphrase = pass;
     const asn = forge.asn1.fromDer(forge.util.decode64(p12base64));
     const p12 = forge.pkcs12.pkcs12FromAsn1(asn, true, passphrase);
-    return true;
+    const certBags = p12.getBags({ bagType: forge.pki.oids.certBag })[forge.pki.oids.certBag];
+    const expiresOn = certBags[0].cert.validity.notAfter;
+    const date = moment().format();
+    let timediff = moment(expiresOn).diff(date, 'seconds');
+    if (timediff < 100000 ) {
+      //cert is expired or expires in one day
+      throw err;
+    }
+    return {
+      isValid: true,
+      expiresOn
+    };
   } catch (err) {
     throw new Error('Error en la llave criptográfica y clave de la misma. Verificar la información en ATV hacienda https://www.hacienda.go.cr/ATV/Login.aspx');
   }
